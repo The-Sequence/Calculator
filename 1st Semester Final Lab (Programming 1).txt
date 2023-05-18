@@ -1,0 +1,321 @@
+#include <iostream>
+
+using namespace std;
+
+// Clears console output
+void clrscr()
+{
+    system("cls");
+}
+
+// 1. Calculator Class - Define a class for the calculator program
+class Calculator {
+public:
+    // Function to perform addition
+    void add(int a, int b) {
+        cout << "The result is: " << a + b << endl;
+    }
+
+    // Function to perform subtraction
+    void subtract(int a, int b) {
+        cout << "The result is: " << a - b << endl;
+    }
+
+    // Function to perform multiplication
+    void multiply(int a, int b) {
+        cout << "The result is: " << a * b << endl;
+    }
+
+    // Function to perform division
+    void divide(int a, int b) {
+        cout << "The result is: " << a / b << endl;
+    }
+};
+
+// 2. Condtional Class - Define a class for the pass or fail determinator
+class Condtional {
+public:
+    // Function to determine whether the student had passed or failed
+    void PassOrFail() {
+        int grade{};
+
+        cout << "Enter your grade: ";
+        cin >> grade;
+
+
+        if (grade >= 98) {
+            cout << "\nYour grade is 1.0" << endl;
+        }
+        else if (grade >= 95 && grade <= 98){
+            cout << "\nYour grade is 1.25" << endl;
+        }
+        else if (grade >= 92 && grade <= 97) {
+            cout << "Your grade is 1.5" << endl;
+        }
+
+        else if (grade >= 92 && grade <= 94) {
+            cout << "Your grade is 1.75" << endl;
+        }
+
+        else if (grade >= 89 && grade <= 88) {
+            cout << "Your grade is 2.0" << endl;
+        }
+
+        else if (grade >= 86 && grade <= 85) {
+            cout << "Your grade is 2.25" << endl;
+        }
+
+        else if (grade >= 83 && grade <= 82) {
+            cout << "Your grade is 2.5" << endl;
+        }
+
+        else if (grade >= 80 && grade <= 79) {
+            cout << "Your grade is 2.75" << endl;
+        }
+
+        else if (grade >= 77 && grade <= 76) {
+            cout << "Your grade is 3.0" << endl;
+        }
+        else if (grade <= 74) {
+            cout << "Your grade is 5.0" << endl;
+        }
+
+    }
+};
+
+// 3. Looping CLass - Define a class for the login program
+class Loop {
+public:
+    // Function to prompt the user for the username and password
+    void prompt() {
+        string username, password;
+        int attempts = 0;
+
+        while (attempts < 5) {
+            clrscr();
+            cout << "Enter the username: ";
+            cin >> username;
+
+            cout << "Enter the password: ";
+            cin >> password;
+
+            // Check if the username and password are correct
+            if (username == "ADMIN" && password == "12345") {
+                cout << "You have successfully logged in." << endl;
+                break;
+            }
+            else {
+                clrscr();
+                cout << "Invalid username or password. You have " << (5 - attempts - 1) << " attempts remaining." << endl;
+            }
+
+            attempts++;
+        }
+
+        if (attempts == 5) {
+            cout << "You have exceeded the maximum number of attempts. The application will now close." << endl;
+        }
+    }
+};
+
+// 4. Array Class - Define a class for the array program
+class Array {
+public:
+    void prompt() {
+
+        system("cls");
+        const int size = 5;
+
+        int array[size];
+        int StudentGrade;
+
+        for (int i = 0; i < size; i++) {
+
+            cout << "\nEnter the grade for Student no. " << i + 1 << ": ";
+            cin >> array[i], StudentGrade;
+
+            system("cls");
+        }
+
+        for (int i = 0; i < size; i++) {
+
+         cout << "\nStudent no. " << i + 1 << ": " << array[i] << "\n";
+
+            if (array[i] >= 101) {
+                cout << "Out of bounds\n";
+            }
+
+            else if (array[i] <= 75) {
+                cout << "Failed\n";
+            }
+
+            else if (array[i] >= 76 || array[i] == 100 && array[i] <= 101) {
+                cout << "Passed!\n";
+            }
+        }
+        exit(3);
+    }
+};
+
+// 5. Pointer class - Define a class for the pointer program
+class Pointer {
+public:
+    void myPointer() {
+        int variable{};
+
+        cout << "Enter a number: ";
+        cin >> variable;
+
+        // declare pointer variable
+        int* PointerVariable;
+
+        // store address of var
+        PointerVariable = &variable;
+
+        // print value of var
+        cout << "The value of variable is = " << variable << endl;
+
+        // print address of var
+        cout << "Address of variable (&variable) = " << &variable << endl
+            << endl;
+
+        // print pointer pointVar
+        cout << "The pointer variable is = " << PointerVariable << endl;
+
+        // print the content of the address pointVar points to
+        cout << "Content of the address pointed to by pointer variable (*pointerVariable) = " << *PointerVariable << endl;
+    }
+};
+
+//6. Inheritance class - Define a class for the Single Inheritance Program
+class Inheritance {
+    string name = " ";
+public:
+    int tail = { 1 };
+    int legs = { 4 };
+};
+class Dog :public Inheritance {
+public:
+    void voiceAction() {
+        cout << "Barks!!!";
+    }
+};
+
+int main() {
+    // Create an instance of the Calculator class
+    Calculator calc;
+
+    // Create an instance of the Conditional class
+    Condtional grade;
+
+    // Create an instance of the Looping class
+    Loop login;
+
+    // Create an instance of the Array class
+    Array start;
+    
+    // Create an instance of the pointer class
+    Pointer prompt;
+
+    // Create an instance of the inheritance class
+    Dog dog;
+
+    // Display the menu to the user
+    cout << "Welcome!" << endl;
+    cout << "Please choose an option from the menu below:\n" << endl;
+
+    cout << "1 = Launch the calculator program (Calculator Class)" << endl;
+    cout << "2 = Launch the student grade pass or fail determinator program (Conditional Class) " << endl;
+    cout << "3 = Launch the login program (Looping Class)" << endl;
+    cout << "4 = Launch the student grade pass or fail determinator program (Array Version) " << endl;
+    cout << "5 = Launch the pointer program (Pointer class) " << endl;
+    cout << "6 = Launch the dog program (Inheritance class) " << endl;
+
+
+
+    cout << "\nEnter your choice: ";
+
+    int choice;
+    cin >> choice;
+
+    // Execute the chosen option
+    if (choice == 1) {
+        // Prompt the user for the two numbers to be used in the calculation
+        int a, b;
+        clrscr();
+        cout << "Enter the first number: ";
+        cin >> a;
+
+        clrscr();
+        cout << "Enter the second number: ";
+        cin >> b;
+
+        // Display a sub-menu for the user to choose which operation to perform
+        clrscr();
+        cout << "Please choose an operation from the menu below:\n" << endl;
+        cout << "1. Addition" << endl;
+        cout << "2. Subtraction" << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division\n" << endl;
+        cout << "\nEnter your choice: ";
+
+        int operation;
+        cin >> operation;
+
+        // Execute the chosen operation
+        if (operation == 1) {
+            clrscr();
+            calc.add(a, b);
+        }
+        else if (operation == 2) {
+            clrscr();
+            calc.subtract(a, b);
+        }
+        else if (operation == 3) {
+            clrscr();
+            calc.multiply(a, b);
+        }
+        else if (operation == 4) {
+            clrscr();
+            calc.divide(a, b);
+        }
+        else {
+            clrscr();
+            cout << "Invalid operation. The application will now close." << endl;
+        }
+    }
+    else if (choice == 2) {
+        clrscr();
+        grade.PassOrFail();
+    }
+    else if (choice == 3) {
+        clrscr();
+        login.prompt();
+    }
+    else if (choice == 4){
+        clrscr();
+        start.prompt();
+    }
+    else if (choice == 5){
+        clrscr();
+        prompt.myPointer();
+    }
+    else if (choice == 6) {
+        clrscr();
+        Dog dog;
+       
+        cout << "Dog has " << dog.legs << " legs" << endl;
+        cout << "Dog has " << dog.tail << " tail" << endl;
+        cout << "Dog ";
+
+        dog.voiceAction();
+    }
+    else {
+        clrscr();
+        cout << "Invalid choice. The application will now close." << endl;
+    }
+
+    return 0;
+}
+
+
